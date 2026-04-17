@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#004a99">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Bitácora CAP">
+
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+
+  <title>Bitácora CAP</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <div class="header">
+      BITÁCORA CAP
+      <div class="subheader">Registro de actividades con QR</div>
+    </div>
+
+    <div class="container" id="mainCont">
+      <div class="card">
+        <h3>Acceso al Sistema</h3>
+        <p class="center muted">Ingresa con tu ID y PIN institucional</p>
+
+        <label for="id">ID Usuario</label>
+        <input type="text" id="id" placeholder="Ej. E0123" autocomplete="username">
+
+        <label for="pin">PIN</label>
+        <input type="password" id="pin" placeholder="PIN" autocomplete="current-password">
+
+        <button class="btn btn-alt" id="btnLogin">INGRESAR</button>
+        <div id="loadL" class="loader"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
