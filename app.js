@@ -15,7 +15,14 @@ async function api(action, payload = {}) {
     body: JSON.stringify({ action, ...payload })
   });
 
-  return await res.json();
+  const text = await res.text();
+  console.log("Respuesta cruda API:", text);
+
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    throw new Error("La API no devolvió JSON válido: " + text);
+  }
 }
 
 async function entrar() {
@@ -29,6 +36,8 @@ async function entrar() {
     const res = await api("login", { id: idV, pin: pinV });
     document.getElementById("loadL").style.display = "none";
 
+    console.log("Login response:", res);
+
     if (res.success) {
       u = res;
       renderUI();
@@ -37,6 +46,7 @@ async function entrar() {
     }
   } catch (err) {
     document.getElementById("loadL").style.display = "none";
-    alert("Error de conexión");
+    console.error(err);
+    alert("Error real: " + err.message);
   }
 }
